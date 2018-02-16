@@ -1,3 +1,3 @@
-# TodoMVC Appbase Auth Server
+# Todos Native Appbase Auth Server
 
 Simple node/express server to add authentication to your app.

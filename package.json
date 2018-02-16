@@ -1,7 +1,7 @@
 {
-  "name": "todomvc-auth-server",
+  "name": "todos-native-auth-server",
   "version": "1.0.0",
-  "description": "Server side logic to handle CUD options on todomvc-auth-client",
+  "description": "Server side logic to handle CUD options on todos-native-client",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/appbaseio-apps/todomvc-auth-server.git"
+    "url": "git+https://github.com/appbaseio-apps/todos-native-auth-server.git"
   },
   "keywords": [
     "todomvc",
@@ -21,9 +21,9 @@
   "author": "Divyanshu Maithani",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/appbaseio-apps/todomvc-auth-server/issues"
+    "url": "https://github.com/appbaseio-apps/todos-native-auth-server/issues"
   },
-  "homepage": "https://github.com/appbaseio-apps/todomvc-auth-server#readme",
+  "homepage": "https://github.com/appbaseio-apps/todos-native-auth-server#readme",
   "dependencies": {
     "appbase-js": "^2.1.0",
     "body-parser": "^1.18.2",

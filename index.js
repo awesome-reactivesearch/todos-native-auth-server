@@ -27,29 +27,27 @@ const checkJwt = jwt({
 	}),
 
 	// Validate the audience and the issuer.
-	audience: 'https://todomvappbase',
+	audience: 'https://todosnative',
 	issuer: 'https://divyanshu.auth0.com/',
 	algorithms: ['RS256']
 });
 
 const appbaseRef = new Appbase({
 	url: "https://scalr.api.appbase.io",
-	app: "todomvc-auth",
-	credentials: "QiqJNlwfU:41a45e61-f761-44fe-947a-6f47de32ae0a"
+	app: "todos-native-live",
+	credentials: "Kgxg0NlC7:423f419c-1121-43cb-82c9-2c155f415f19"
 });
 
-const ES_TYPE = "todo_reactjs";
+const type = 'todos-native-live';
 
 // routes
 app.post('/', checkJwt, (req, res) => {
     appbaseRef.index({
-      type: ES_TYPE,
-      id: req.body.id,
+	  type,
       body: {
-		id: req.body.id,
 		title: req.body.title,
 		completed: false,
-		createdAt: req.body.createdAt,
+		createdAt: Date.now(),
 		name: req.body.name,
 		avatar: req.body.avatar
 	  }
@@ -66,16 +64,12 @@ app.post('/', checkJwt, (req, res) => {
 
 app.put('/', checkJwt, (req, res) => {
     appbaseRef.update({
-      type: ES_TYPE,
-      id: req.body.id,
+	  id: req.body.id,
+	  type,
       body: {
-		  doc: Object.assign({},
-			req.body.completed !== undefined && {
-				completed: req.body.completed
-			},
-			req.body.title && {
-				title: req.body.title
-			})
+		  doc: {
+			  completed: req.body.completed
+		  }
 	  }
     }).on("data", function(response) {
 	  res.send({
@@ -90,8 +84,8 @@ app.put('/', checkJwt, (req, res) => {
 
 app.delete('/', checkJwt, (req, res) => {
 	appbaseRef.delete({
-		type: ES_TYPE,
-		id: req.body.id
+		id: req.body.id,
+		type
 	}).on("data", function(response) {
 		res.send({
 			status: 200,
